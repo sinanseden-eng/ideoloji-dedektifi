@@ -48,10 +48,14 @@ export default function App() {
             <Route path="/tarih" element={<Timeline />} />
           </Routes>
         </main>
-        <footer className="py-6 text-center font-mono text-xs text-brass-dark/50">
-          "Bu atlas, siyasi gerçeği değil, siyasi takıntıları haritalandırır." <br/>© Araştırmacının Günlüğü
-        </footer>
-      </div>
-    </BrowserRouter>
-  );
-}
+       <footer className="py-8 text-center">
+  <p className="font-mono text-xs text-brass-dark/50 mb-4">
+    "Bu atlas, siyasi gerçeği değil, siyasi takıntıları haritalandırır." <br/>© Araştırmacının Günlüğü
+  </p>
+  <div className="flex flex-col items-center gap-1">
+    <div className="w-12 h-[1px] bg-brass-dark/40 mb-2"></div>
+    <p className="font-serif italic text-3xl text-brass-light/80 tracking-wider drop-shadow-md">
+      Sinan
+    </p>
+  </div>
+</footer>
