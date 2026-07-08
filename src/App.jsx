@@ -20,18 +20,33 @@ export default function App() {
     <BrowserRouter>
       <Background />
       <div className="relative z-10 min-h-screen flex flex-col">
+        
+        {/* Üst Navigation Paneli */}
         <nav className="sticky top-0 z-40 bg-walnut-dark/80 backdrop-blur-md border-b-2 border-brass-dark shadow-lg">
           <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <h1 className="font-serif text-xl md:text-2xl text-brass-light tracking-wider hidden sm:block">Türkiye İdeoloji Atlası</h1>
+            <h1 className="font-serif text-xl md:text-2xl text-brass-light tracking-wider hidden sm:block">
+              Türkiye İdeoloji Atlası
+            </h1>
             <div className="flex gap-2 md:gap-6 w-full sm:w-auto justify-around">
               {navItems.map((item) => (
                 <NavLink key={item.path} to={item.path} className="relative px-4 py-2 group">
                   {({ isActive }) => (
                     <>
-                      <motion.span className={`flex flex-col items-center text-xs font-mono transition-colors ${isActive ? 'text-brass-light' : 'text-paper-dark/60 group-hover:text-paper-light'}`} whileHover={{ y: -2 }}>
-                        <span className="text-lg mb-1">{item.icon}</span>{item.label}
+                      <motion.span 
+                        className={`flex flex-col items-center text-xs font-mono transition-colors ${
+                          isActive ? 'text-brass-light' : 'text-paper-dark/60 group-hover:text-paper-light'
+                        }`}
+                        whileHover={{ y: -2 }}
+                      >
+                        <span className="text-lg mb-1">{item.icon}</span>
+                        {item.label}
                       </motion.span>
-                      {isActive && <motion.div layoutId="navIndicator" className="absolute bottom-0 left-0 right-0 h-1 bg-brass-dark rounded-full" />}
+                      {isActive && (
+                        <motion.div 
+                          layoutId="navIndicator"
+                          className="absolute bottom-0 left-0 right-0 h-1 bg-brass-dark rounded-full"
+                        />
+                      )}
                     </>
                   )}
                 </NavLink>
@@ -39,6 +54,8 @@ export default function App() {
             </div>
           </div>
         </nav>
+
+        {/* İçerik Alanı */}
         <main className="flex-1 flex flex-col items-center justify-start py-12">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -48,14 +65,21 @@ export default function App() {
             <Route path="/tarih" element={<Timeline />} />
           </Routes>
         </main>
-       <footer className="py-8 text-center">
-  <p className="font-mono text-xs text-brass-dark/50 mb-4">
-    "Bu atlas, siyasi gerçeği değil, siyasi takıntıları haritalandırır." <br/>© Araştırmacının Günlüğü
-  </p>
-  <div className="flex flex-col items-center gap-1">
-    <div className="w-12 h-[1px] bg-brass-dark/40 mb-2"></div>
-    <p className="font-serif italic text-3xl text-brass-light/80 tracking-wider drop-shadow-md">
-      Sinan
-    </p>
-  </div>
-</footer>
+
+        {/* Alt Bilgi ve İmza */}
+        <footer className="py-8 text-center">
+          <p className="font-mono text-xs text-brass-dark/50 mb-4">
+            "Bu atlas, siyasi gerçeği değil, siyasi takıntıları haritalandırır." <br/>© Araştırmacının Günlüğü
+          </p>
+          <div className="flex flex-col items-center gap-1">
+            <div className="w-12 h-[1px] bg-brass-dark/40 mb-2"></div>
+            <p className="font-serif italic text-3xl text-brass-light/80 tracking-wider drop-shadow-md">
+              Sinan
+            </p>
+          </div>
+        </footer>
+        
+      </div>
+    </BrowserRouter>
+  );
+}
